@@ -1,0 +1,10 @@
+*.pyc
+*.o
+*.so
+*.a
+*~
+*.swp
+*.swo
+*tags
+*DS_Store
+*_pycache__
