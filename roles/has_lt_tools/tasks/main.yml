@@ -1,0 +1,20 @@
+---
+#- name: rsync lt_tools directory to target
+#  synchronize:
+#      src: .
+#      dest: "{{ ansible_user_dir }}/lt_tools"
+#      archive: yes
+#      group: no
+#      owner: no
+
+- debug: var=ansible_ssh_user
+- debug: var=inventory_hostname
+- debug: var=ansible_user_dir
+
+- name: rsync lt_tools directory to target
+  shell: "rsync -Faz --no-owner --no-group --stats ~/lt_tools/ {{ ansible_ssh_user }}@{{ inventory_hostname }}:{{ ansible_user_dir }}/lt_tools/ | awk '/files transferred/ {print $5}'"
+  delegate_to: 127.0.0.1
+  register: rsync_result
+  #changed_when: rsync_result.stdout != '0' # this doesn't work - bug??
+
+- debug: var=rsync_result

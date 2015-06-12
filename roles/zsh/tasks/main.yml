@@ -1,0 +1,43 @@
+---
+- name: have system dependencies (Debians)
+  remote_user: root
+  apt: name={{ item }} state=present
+  with_items:
+      - zsh
+      - curl
+  when: ansible_os_family == "Debian"
+
+- name: have system dependencies (RedHats)
+  remote_user: root
+  yum: name={{ item }} state=present
+  with_items:
+      - zsh
+      - curl
+  when: ansible_os_family == "RedHat"
+
+
+## Installation for normal user
+
+- name: stat ~/.oh-my-zsh
+  stat: path=~/.oh-my-zsh
+  register: zsh_dir_stat
+
+- name: "if not installed: run oh-my-zsh installer"
+  script: install.sh
+  when: not zsh_dir_stat.stat.exists
+
+- name: have symlink to oh-my-zsh custom directory
+  file:
+      dest: "{{ ansible_user_dir }}/.oh-my-zsh-custom"
+      state: link
+      src: "{{ ansible_user_dir }}/lt_tools/roles/zsh/files/oh-my-zsh-custom"
+
+- name: have ~/.zshrc from our template
+  template:
+      src: zshrc.j2
+      dest: ~/.zshrc
+      backup: yes
+
+
+# TODO: change shell to zsh - check the chsh invocation from the installer,
+# then do that as root and hope that there is no password prompt
