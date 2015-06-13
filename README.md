@@ -58,7 +58,7 @@ ansible-playbook -i INVENTORY -l ANSIBLE_HOST_PATTERN playbooks/PLAYBOOK
 
 Substitute INVENTORY with the path to your inventory file (mine is inventory/default).
 
-Substitute ANSIBLE\_HOST\_PATTERN with a host pattern matching one or many hosts in inventory/default. *Don't forget this*.
+Substitute ANSIBLE\_HOST\_PATTERN with a [pattern](http://docs.ansible.com/intro_patterns.html) matching one or many hosts in inventory/default. *Don't forget this*.
 
 Substitute PLAYBOOK with the playbook file you want to run.
 
