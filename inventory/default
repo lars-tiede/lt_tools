@@ -1,13 +1,17 @@
 [home-local]
-lars-macbook ansible_ssh_user=sparhawk lt_machine_name="lars-macbook"
-larsoldmacbook.local lt_machine_name="larsoldmacbook" ansible_ssh_user=sparhawk
+lars-macbook                    lt_machine_name=lars-macbook        lt_user=sparhawk
+larsoldmacbook.local            lt_machine_name=larsoldmacbook      lt_user=sparhawk
+
+[home:children]
+home-local
+
 
 [ita-local]
-tf-ita-lti002-pc.cc.uit.no lt_machine_name="ltita-pc" ansible_ssh_user=lti002
-tf-ita-lti002-tmu1.cc.uit.no lt_machine_name="ltita-tmu1" ansible_ssh_user=lti002
+tf-ita-lti002-pc.cc.uit.no      lt_machine_name=ltita-pc            lt_user=lti002
+tf-ita-lti002-tmu1.cc.uit.no    lt_machine_name=ltita-tmu1          lt_user=lti002
 
 [ita-remote]
-asskicker.uit.no ansible_ssh_user=root lt_machine_name="asskicker"
+asskicker.uit.no                lt_machine_name=asskicker           lt_user=root
 
 [ita:children]
 ita-local
@@ -15,8 +19,8 @@ ita-remote
 
 
 [ifi-remote]
-rocksvv.cs.uit.no ansible_ssh_user=lti002 lt_machine_name="rocksvv"
-tellus-demo ansible_ssh_user=lti002 lt_machine_name="tellus-demo"
+rocksvv.cs.uit.no               lt_machine_name=rocksvv             lt_user=lti002
+tellus-demo                     lt_machine_name=tellus-demo         lt_user=lti002 
 
 [ifi:children]
 ifi-remote

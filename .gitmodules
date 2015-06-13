@@ -1,3 +1,6 @@
 [submodule "roles/zsh/files/oh-my-zsh-custom/themes/powerlevel9k"]
 	path = roles/zsh/files/oh-my-zsh-custom/themes/powerlevel9k
 	url = https://github.com/bhilburn/powerlevel9k.git
+[submodule "roles/zsh/files/oh-my-zsh"]
+	path = roles/zsh/files/oh-my-zsh
+	url = https://github.com/robbyrussell/oh-my-zsh.git

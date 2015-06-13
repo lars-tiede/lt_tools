@@ -1,1 +1,4 @@
-dir-merge,- .gitignore
+# dir-merge,-n .gitignore # doesn't work when .gitignore contains lines starting with !
+
+# MY "main" .gitignore is fine
+merge,- .gitignore

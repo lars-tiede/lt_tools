@@ -4,7 +4,7 @@
   apt: name={{ item }} state=present
   with_items:
       - zsh
-      - curl
+      - rsync
   when: ansible_os_family == "Debian"
 
 - name: have system dependencies (RedHats)
@@ -12,32 +12,76 @@
   yum: name={{ item }} state=present
   with_items:
       - zsh
-      - curl
+      - rsync
   when: ansible_os_family == "RedHat"
 
 
-## Installation for normal user
 
-- name: stat ~/.oh-my-zsh
-  stat: path=~/.oh-my-zsh
-  register: zsh_dir_stat
+# Installation for lt_user and root (but default shell only for lt_user)
 
-- name: "if not installed: run oh-my-zsh installer"
-  script: install.sh
-  when: not zsh_dir_stat.stat.exists
-
-- name: have symlink to oh-my-zsh custom directory
+- name: have symlinks to oh-my-zsh and oh-my-zsh-custom dirs (lt_user)
   file:
-      dest: "{{ ansible_user_dir }}/.oh-my-zsh-custom"
+      dest: "{{ ansible_user_dir }}/.{{ item }}"
       state: link
-      src: "{{ ansible_user_dir }}/lt_tools/roles/zsh/files/oh-my-zsh-custom"
+      src: "{{ ansible_user_dir }}/lt_tools/roles/zsh/files/{{ item }}"
+  with_items:
+      - "oh-my-zsh"
+      - "oh-my-zsh-custom"
 
-- name: have ~/.zshrc from our template
+
+ ## for the root user, we rsync lt_user's lt_tools dir to /root/lt_tools, then
+ ## do the same symlinking there
+
+- name: figure out path to lt_user's home directory (if lt_user != root)
+  set_fact: 
+      lt_user_home_dir: "{{ ansible_user_dir }}"
+  when: lt_user != "root"
+
+- name: rsync lt_tools directory to root's home directory (if lt_user != root)
+  remote_user: root
+  shell: "rsync -Faz --no-owner --no-group --stats {{ lt_user_home_dir }}/lt_tools/ ~/lt_tools/ | awk '/files transferred/ {print $5}'"
+  register: rsync_result
+  changed_when: rsync_result.stdout != '0'
+  when: lt_user != "root"
+
+#- debug: var=rsync_result
+
+- name: have symlinks to oh-my-zsh and oh-my-zsh-custom dirs (root, if lt_user != root)
+  remote_user: root
+  file:
+      dest: "{{ ansible_user_dir }}/.{{ item }}"
+      state: link
+      src: "{{ ansible_user_dir }}/lt_tools/roles/zsh/files/{{ item }}"
+  with_items:
+      - "oh-my-zsh"
+      - "oh-my-zsh-custom"
+  when: lt_user != "root"
+
+
+## .zshrc for lt_user and root from our template
+
+- name: have ~/.zshrc from our template (lt_user)
   template:
       src: zshrc.j2
       dest: ~/.zshrc
       backup: yes
 
+- name: have ~/.zshrc from our template (root, if lt_user != root)
+  remote_user: root
+  template:
+      src: zshrc.j2
+      dest: ~/.zshrc
+      backup: yes
+  when: lt_user != "root"
 
-# TODO: change shell to zsh - check the chsh invocation from the installer,
-# then do that as root and hope that there is no password prompt
+
+## zsh should be the default shell for lt_user, but not for root
+
+- name: have zsh as default login shell for lt_user (if lt_user != root)
+  remote_user: root
+  shell: "chsh -s $(grep /zsh$ /etc/shells | tail -1) {{ lt_user }}"
+  register: chsh_result
+  changed_when: chsh_result.stderr.find('no changes made') == -1
+  when: lt_user != "root"
+
+#- debug: var=chsh_result
