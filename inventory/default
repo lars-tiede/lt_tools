@@ -1,5 +1,5 @@
 [home-local]
-lars-macbook                    lt_machine_name=lars-macbook        lt_user=sparhawk
+lars-macbook.local              lt_machine_name=lars-macbook        lt_user=sparhawk
 larsoldmacbook.local            lt_machine_name=larsoldmacbook      lt_user=sparhawk
 
 [home:children]
