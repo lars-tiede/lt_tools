@@ -13,9 +13,17 @@ Basic ideas:
   - wherever Ansible distributes and installs stuff, the repository is available and ready for working on it.
 - have a few helper scripts to make common tasks (such as "render me this dotfile template locally on this machine right now") simple and fast.
 
-### Installed and maintained things so far
+### Installed and configured things so far
 
 - zsh ([oh-my-zsh](http://ohmyz.sh/) with my customizations)
+- tmux
+
+### Next up
+
+- vim with vundle and plugins
+- ssh config
+- git with config
+- other tools: httpie, ipython, pip, virtualenv, ansible, ...
 
 
 ## Installation
@@ -33,7 +41,11 @@ If you're not me, you will want to change the inventory or make your own.
 
 ## Prerequisites on target machines
 
-Passwordless ssh as lt\_user (see inventory) and root (will be fixed in the future with a script that sets all that up) from the 'control machine' (the one you run lt\_tools scripts on).
+Passwordless ssh as lt\_user (see inventory) and root, from the 'control machine' (the one you run playbooks on).
+
+On Macs: [brew](http://brew.sh/).
+
+*(Getting rid of as many prerequisites as possible is on the TODO list)*
 
 
 ## Run
