@@ -21,9 +21,9 @@
 
 - name: have symlinks to oh-my-zsh and oh-my-zsh-custom dirs (lt_user)
   file:
-      dest: "{{ ansible_user_dir }}/.{{ item }}"
+      dest: "~/.{{ item }}"
       state: link
-      src: "{{ ansible_user_dir }}/lt_tools/roles/zsh/files/{{ item }}"
+      src: "~/lt_tools/roles/zsh/files/{{ item }}"
   with_items:
       - "oh-my-zsh"
       - "oh-my-zsh-custom"
@@ -39,7 +39,7 @@
 
 - name: rsync lt_tools directory to root's home directory (if lt_user != root)
   remote_user: root
-  shell: "rsync -Faz --no-owner --no-group --stats {{ lt_user_home_dir }}/lt_tools/ ~/lt_tools/ | awk '/files transferred/ {print $5}'"
+  shell: "rsync -Faz --no-owner --no-group --stats {{ lt_user_home_dir }}/lt_tools/ ~/lt_tools/ | awk '/transferred:/ {print $(NF)}'"
   register: rsync_result
   changed_when: rsync_result.stdout != '0'
   when: lt_user != "root"
@@ -49,9 +49,9 @@
 - name: have symlinks to oh-my-zsh and oh-my-zsh-custom dirs (root, if lt_user != root)
   remote_user: root
   file:
-      dest: "{{ ansible_user_dir }}/.{{ item }}"
+      dest: "~/.{{ item }}"
       state: link
-      src: "{{ ansible_user_dir }}/lt_tools/roles/zsh/files/{{ item }}"
+      src: "~/lt_tools/roles/zsh/files/{{ item }}"
   with_items:
       - "oh-my-zsh"
       - "oh-my-zsh-custom"
@@ -77,11 +77,17 @@
 
 ## zsh should be the default shell for lt_user, but not for root
 
-- name: have zsh as default login shell for lt_user (if lt_user != root)
+# NOTE: don't ever use the 'user' module on OSX targets...
+- name: "Linux: have zsh as default login shell for lt_user (if lt_user != root)"
+  remote_user: root
+  user: name={{ lt_user }} shell=/bin/zsh
+  when: ansible_os_family != "Darwin" and lt_user != "root"
+
+- name: "OSX: have zsh as default login shell for lt_user (if lt_user != root)"
   remote_user: root
   shell: "chsh -s $(grep /zsh$ /etc/shells | tail -1) {{ lt_user }}"
   register: chsh_result
   changed_when: chsh_result.stderr.find('no changes made') == -1
-  when: lt_user != "root"
+  when: ansible_os_family == "Darwin" and lt_user != "root"
 
 #- debug: var=chsh_result

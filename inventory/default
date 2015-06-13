@@ -1,26 +1,37 @@
-[home-local]
+# all hosts (there are duplicates for those with several ssh names)
 lars-macbook.local              lt_machine_name=lars-macbook        lt_user=sparhawk
+
 larsoldmacbook.local            lt_machine_name=larsoldmacbook      lt_user=sparhawk
 
-[home:children]
-home-local
+ltita-pc                        lt_machine_name=ltita-pc            lt_user=lti002
+ltita-pc.local                  lt_machine_name=ltita-pc            lt_user=lti002
 
+ltita-tmu1                      lt_machine_name=ltita-tmu1          lt_user=lti002
+ltita-tmu1.local                lt_machine_name=ltita-tmu1          lt_user=lti002
 
-[ita-local]
-tf-ita-lti002-pc.cc.uit.no      lt_machine_name=ltita-pc            lt_user=lti002
-tf-ita-lti002-tmu1.cc.uit.no    lt_machine_name=ltita-tmu1          lt_user=lti002
-
-[ita-remote]
 asskicker.uit.no                lt_machine_name=asskicker           lt_user=root
 
-[ita:children]
-ita-local
-ita-remote
+rocksvv                         lt_machine_name=rocksvv             lt_user=lti002
 
-
-[ifi-remote]
-rocksvv.cs.uit.no               lt_machine_name=rocksvv             lt_user=lti002
 tellus-demo                     lt_machine_name=tellus-demo         lt_user=lti002 
 
-[ifi:children]
-ifi-remote
+
+
+# groups according to "from where am i calling ansible"
+
+[from-home]
+#lars-macbook.local
+larsoldmacbook.local
+ltita-pc
+ltita-tmu1
+asskicker.uit.no
+rocksvv
+tellus-demo
+
+
+[from-anywhere]
+ltita-pc
+ltita-tmu1
+asskicker.uit.no
+rocksvv
+tellus-demo

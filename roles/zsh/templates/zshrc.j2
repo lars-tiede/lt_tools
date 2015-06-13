@@ -5,7 +5,7 @@
 
 
 # Path to your oh-my-zsh installation.
-export ZSH={{ ansible_user_dir }}/.oh-my-zsh
+export ZSH=~/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -61,8 +61,8 @@ plugins=(git brew httpie osx pip tmux virtualenv vi-mode)
 
 # User configuration
 
-export GOPATH={{ ansible_user_dir }}/go
-export PATH="/usr/local/bin:$PATH:{{ ansible_user_dir }}/bin:$GOPATH/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/go/bin"
+export GOPATH=~/go
+export PATH="/usr/local/bin:$PATH:~/bin:$GOPATH/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/go/bin"
 
 {% if lt_machine_name == "lars-macbook" %}
 export PATH="$PATH:/Users/sparhawk/bin/android-sdk-mac_86/tools:/Users/sparhawk/bin/android-sdk-mac_86/platform-tools:/usr/local/cuda/bin:/usr/texbin:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin"
