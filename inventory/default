@@ -15,6 +15,8 @@ rocksvv                         lt_machine_name=rocksvv             lt_user=lti0
 
 tellus-demo                     lt_machine_name=tellus-demo         lt_user=lti002 
 
+skolelab1-wifi                  lt_machine_name=skolelab1           lt_user=lti002
+
 
 
 # groups according to "from where am i calling ansible"
@@ -27,6 +29,7 @@ ltita-tmu1
 asskicker.uit.no
 rocksvv
 tellus-demo
+skolelab1-wifi
 
 
 [from-anywhere]
@@ -35,3 +38,4 @@ ltita-tmu1
 asskicker.uit.no
 rocksvv
 tellus-demo
+skolelab1-wifi
