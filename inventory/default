@@ -1,4 +1,5 @@
 # all hosts (there are duplicates for those with several ssh names)
+tf-ita-lti002-dock.cc.uit.no    lt_machine_name=lars-macbook        lt_user=sparhawk
 lars-macbook.local              lt_machine_name=lars-macbook        lt_user=sparhawk
 
 larsoldmacbook.local            lt_machine_name=larsoldmacbook      lt_user=sparhawk
