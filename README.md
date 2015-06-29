@@ -63,6 +63,15 @@ Substitute ANSIBLE\_HOST\_PATTERN with a [pattern](http://docs.ansible.com/intro
 Substitute PLAYBOOK with the playbook file you want to run.
 
 
+### Tricks
+
+Run playbook on localhost:
+
+```sh
+ansible-playbook -i inventory/default -l `hostname` playbooks/PLAYBOOK
+```
+
+
 ## License
 
 [MIT](LICENSE.txt)
