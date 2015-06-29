@@ -16,6 +16,7 @@ rocksvv                         lt_machine_name=rocksvv             lt_user=lti0
 tellus-demo                     lt_machine_name=tellus-demo         lt_user=lti002 
 
 skolelab1-wifi                  lt_machine_name=skolelab1           lt_user=lti002
+skolelab5-wifi                  lt_machine_name=skolelab5           lt_user=lti002
 
 
 
@@ -30,6 +31,7 @@ asskicker.uit.no
 rocksvv
 tellus-demo
 skolelab1-wifi
+skolelab5-wifi
 
 
 [from-anywhere]
@@ -39,3 +41,4 @@ asskicker.uit.no
 rocksvv
 tellus-demo
 skolelab1-wifi
+skolelab5-wifi
