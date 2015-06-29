@@ -63,12 +63,16 @@ Substitute ANSIBLE\_HOST\_PATTERN with a [pattern](http://docs.ansible.com/intro
 Substitute PLAYBOOK with the playbook file you want to run.
 
 
-### Tricks
+## Tricks and often used things
 
-Run playbook on localhost:
-
+Run playbook on localhost (hostname must be in inventory):
 ```sh
 ansible-playbook -i inventory/default -l `hostname` playbooks/PLAYBOOK
+```
+
+Update zshrc: edit roles/zsh/templates/zshrc.j2, then
+```sh
+ansible-playbook -i inventory/default -l PATTERN playbooks/zsh.yml
 ```
 
 
