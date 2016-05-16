@@ -6,8 +6,8 @@ larsoldmacbook.local            lt_machine_name=larsoldmacbook      lt_user=spar
 vpnbox                          lt_machine_name=vpnbox              lt_user=sparhawk
 gatebox                         lt_machine_name=gatebox             lt_user=sparhawk
 #gitbox                          lt_machine_name=gitbox              lt_user=sparhawk
-sandbox                         lt_machine_name=sandbox              lt_user=sparhawk
-xenbox                          lt_machine_name=xenbox              lt_user=sparhawk
+sandbox                         lt_machine_name=sandbox             lt_user=sparhawk
+xenbox                          lt_machine_name=xenbox              lt_user=sparhawk    ansible_python_interpreter=/usr/bin/python2.7
 
 ltita-pc                        lt_machine_name=ltita-pc            lt_user=lti002
 ltita-pc.local                  lt_machine_name=ltita-pc            lt_user=lti002
