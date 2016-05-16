@@ -5,8 +5,9 @@ lars-macbook.local              lt_machine_name=lars-macbook        lt_user=spar
 larsoldmacbook.local            lt_machine_name=larsoldmacbook      lt_user=sparhawk
 vpnbox                          lt_machine_name=vpnbox              lt_user=sparhawk
 gatebox                         lt_machine_name=gatebox             lt_user=sparhawk
-gitbox                          lt_machine_name=gitbox              lt_user=sparhawk
+#gitbox                          lt_machine_name=gitbox              lt_user=sparhawk
 sandbox                         lt_machine_name=sandbox              lt_user=sparhawk
+xenbox                          lt_machine_name=xenbox              lt_user=sparhawk
 
 ltita-pc                        lt_machine_name=ltita-pc            lt_user=lti002
 ltita-pc.local                  lt_machine_name=ltita-pc            lt_user=lti002
