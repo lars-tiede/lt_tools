@@ -53,10 +53,8 @@ On Macs: [brew](http://brew.sh/).
 For now, just run playbooks directly. From within lt\_tools:
 
 ```bash
-ansible-playbook -i INVENTORY -l ANSIBLE_HOST_PATTERN playbooks/PLAYBOOK
+ansible-playbook -l ANSIBLE_HOST_PATTERN playbooks/PLAYBOOK
 ```
-
-Substitute INVENTORY with the path to your inventory file (mine is inventory/default).
 
 Substitute ANSIBLE\_HOST\_PATTERN with a [pattern](http://docs.ansible.com/intro_patterns.html) matching one or many hosts in inventory/default. *Don't forget this*.
 
@@ -67,12 +65,12 @@ Substitute PLAYBOOK with the playbook file you want to run.
 
 Run playbook on localhost (hostname must be in inventory):
 ```sh
-ansible-playbook -i inventory/default -l `hostname` playbooks/PLAYBOOK
+ansible-playbook -l `hostname` playbooks/PLAYBOOK
 ```
 
 Update zshrc: edit roles/zsh/templates/zshrc.j2, then
 ```sh
-ansible-playbook -i inventory/default -l PATTERN playbooks/zsh.yml
+ansible-playbook -l PATTERN playbooks/zsh.yml
 ```
 
 
