@@ -8,6 +8,7 @@ gatebox                         lt_machine_name=gatebox             lt_user=spar
 #gitbox                          lt_machine_name=gitbox              lt_user=sparhawk
 sandbox                         lt_machine_name=sandbox             lt_user=sparhawk
 plexbox                         lt_machine_name=plexbox             lt_user=sparhawk    ansible_python_interpreter=/usr/bin/python2.7
+ubuntu-test-kvm                 lt_machine_name=ubuntu-test-kvm     lt_user=sparhawk    ansible_python_interpreter=/usr/bin/python2.7
 
 ltita-pc                        lt_machine_name=ltita-pc            lt_user=lti002
 ltita-pc.local                  lt_machine_name=ltita-pc            lt_user=lti002
