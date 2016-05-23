@@ -26,6 +26,12 @@ skolelab1-wifi                  lt_machine_name=skolelab1           lt_user=lti0
 skolelab5-wifi                  lt_machine_name=skolelab5           lt_user=lti002
 
 
+[ubuntus]
+vpnbox
+gatebox
+plexbox
+ubuntu-test-kvm
+
 
 # groups according to "from where am i calling ansible"
 

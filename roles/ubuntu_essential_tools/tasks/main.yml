@@ -1,0 +1,28 @@
+---
+- name: bunch of apt packages
+  remote_user: root
+  apt:
+      name: "{{ item }}"
+      state: present
+  with_items:
+      - aptitude
+      - htop
+      - sysstat # for iostat
+      - iptraf-ng
+      - iotop
+      - iftop
+      - nethogs
+      # ranger and helpers for ranger
+      - ranger
+      - python-chardet
+      - atool
+      - unzip
+      - unrar
+      - lbzip2
+      - w3m
+      - w3m-img
+      - caca-utils
+      - toilet
+      - highlight
+      # midnight commander
+      - mc

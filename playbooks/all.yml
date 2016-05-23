@@ -4,3 +4,8 @@
   roles:
       - role: zsh
       - role: tmux
+
+- hosts: ubuntus
+  remote_user: "{{ lt_user }}"
+  roles:
+      - role: ubuntu_essential_tools
