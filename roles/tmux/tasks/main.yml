@@ -1,22 +1,43 @@
 ---
-- name: have tmux (Debians)
+- name: have tmux and git (Debians)
   remote_user: root
   apt: name={{ item }} state=present
   with_items:
       - tmux
+      - git
   when: ansible_os_family == "Debian"
 
-- name: have tmux (RedHats)
+- name: have tmux and git (RedHats)
   remote_user: root
   yum: name={{ item }} state=present
   with_items:
       - tmux
+      - git
   when: ansible_os_family == "RedHat"
 
-- name: have tmux (OSX)
-  homebrew: name=tmux update_homebrew=yes
+- name: have tmux and git (OSX)
+  homebrew: name={{ item }} update_homebrew=yes
+  with_items:
+      - tmux
+      - git
   when: ansible_os_family == "Darwin"
 
 
+- name: have ~/.tmux/plugins/tpm directory
+  file:
+      path: "{{ ansible_user_dir }}/.tmux/plugins/tpm"
+      state: directory
+
+- name: have tmux plugin manager repo clone
+  git:
+      repo: https://github.com/tmux-plugins/tpm
+      dest: "{{ ansible_user_dir }}/.tmux/plugins/tpm"
+      accept_hostkey: yes
+
 - name: have dotfile (lt_user)
   template: src=tmux.conf.j2 dest=~/.tmux.conf backup=yes
+
+- name: "run 'install plugins' shell script if it hasn't run before"
+  shell: "{{ ansible_user_dir }}/.tmux/plugins/tpm/scripts/install_plugins.sh"
+  args:
+      creates: "{{ ansible_user_dir }}/.tmux/plugins/tmux-sensible"
