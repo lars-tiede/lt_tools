@@ -5,10 +5,11 @@ lars-macbook.local              lt_machine_name=lars-macbook        lt_user=spar
 larsoldmacbook.local            lt_machine_name=larsoldmacbook      lt_user=sparhawk
 vpnbox                          lt_machine_name=vpnbox              lt_user=sparhawk
 gatebox                         lt_machine_name=gatebox             lt_user=sparhawk
-#gitbox                          lt_machine_name=gitbox              lt_user=sparhawk
 sandbox                         lt_machine_name=sandbox             lt_user=sparhawk
-plexbox                         lt_machine_name=plexbox             lt_user=sparhawk    ansible_python_interpreter=/usr/bin/python2.7
-ubuntu-test-kvm                 lt_machine_name=ubuntu-test-kvm     lt_user=sparhawk    ansible_python_interpreter=/usr/bin/python2.7
+plexbox                         lt_machine_name=plexbox             lt_user=sparhawk
+gitlabbox                       lt_machine_name=gitlabbox           lt_user=sparhawk
+ubuntu-test-kvm                 lt_machine_name=ubuntu-test-kvm     lt_user=sparhawk
+ubuntu-test-lxc                 lt_machine_name=ubuntu-test-lxc     lt_user=sparhawk
 
 ltita-pc                        lt_machine_name=ltita-pc            lt_user=lti002
 ltita-pc.local                  lt_machine_name=ltita-pc            lt_user=lti002
@@ -30,7 +31,9 @@ skolelab5-wifi                  lt_machine_name=skolelab5           lt_user=lti0
 vpnbox
 gatebox
 plexbox
+gitlabbox
 ubuntu-test-kvm
+ubuntu-test-lxc
 
 
 # groups according to "from where am i calling ansible"
