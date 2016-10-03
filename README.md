@@ -34,7 +34,13 @@ Basic ideas:
 ~$ git clone --recursive https://github.com/lars-tiede/lt_tools.git
 ```
 
-On machines that you want to run ansible playbooks on, you need Ansible.
+On machines that you want to run ansible playbooks on, you need Ansible. Install it in a local Python 2.7 virtualenv like so:
+
+```sh
+$ virtualenv -p python2.7 py-env
+$ ./py-env/bin/activate
+$ pip install -r requirements.txt
+```
 
 If you're not me, you will want to change the inventory or make your own.
 
