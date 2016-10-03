@@ -34,6 +34,10 @@ plexbox
 gitlabbox
 ubuntu-test-kvm
 ubuntu-test-lxc
+ltita-pc
+ltita-pc.local
+ltita-tmu1
+ltita-tmu1.local
 
 
 # groups according to "from where am i calling ansible"
