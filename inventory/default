@@ -1,8 +1,8 @@
 # all hosts (there are duplicates for those with several ssh names)
 tf-ita-lti002-dock.cc.uit.no    lt_machine_name=lars-macbook        lt_user=sparhawk
-lars-macbook.local              lt_machine_name=lars-macbook        lt_user=sparhawk
+lars-macbook-wifi.tiedehome     lt_machine_name=lars-macbook        lt_user=sparhawk
 
-larsoldmacbook.local            lt_machine_name=larsoldmacbook      lt_user=sparhawk
+#larsoldmacbook.local            lt_machine_name=larsoldmacbook      lt_user=sparhawk
 vpnbox                          lt_machine_name=vpnbox              lt_user=sparhawk
 gatebox                         lt_machine_name=gatebox             lt_user=sparhawk
 sandbox                         lt_machine_name=sandbox             lt_user=sparhawk
@@ -44,7 +44,7 @@ ltita-tmu1.local
 
 [from-home]
 #lars-macbook.local
-larsoldmacbook.local
+#larsoldmacbook.local
 ltita-pc
 ltita-tmu1
 asskicker.uit.no
